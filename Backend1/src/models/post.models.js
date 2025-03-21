@@ -3,13 +3,17 @@ import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2"
 const postSchema=new Schema({
     owner:{
         type:Schema.Types.ObjectId,
-        ref:"User"
+        ref:"user"
     },
     caption:{
         type:String
     },
     postImage:{
         type:String
+    },
+    likes:{
+        type:Number,
+        default:1
     }
     
 })

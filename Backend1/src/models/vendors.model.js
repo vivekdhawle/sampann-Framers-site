@@ -11,13 +11,17 @@ const vendorSchema=new Schema({
         index:true
     },
     productPrize:{
-        type:Number,
+        type:String,
     },
     productDescription:{
         type:String
     },
     productImage:{
         type:String
+    },
+    averageLikes:{
+        type:Schema.Types.ObjectId,
+        ref:"Post"
     }
 
 })

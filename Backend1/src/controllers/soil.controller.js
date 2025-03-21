@@ -1,9 +1,9 @@
-import { Plants } from "../models/plants.models";
+
 import { apiError } from "../utils/apiError.js";
 import { apiResponse } from "../utils/apiResponse.js";
 import asyncHandler from "../utils/asynchandler.js";
 import { detectLanguage, translateText } from '../utils/translation.utils.js';
-
+import { Soil } from "../models/soil.models.js";
 // const getSoil=asyncHandler(async(req,res)=>{
 //     const {soilName}=req.query
 //     if (!soilName) {
@@ -35,18 +35,15 @@ import { detectLanguage, translateText } from '../utils/translation.utils.js';
 // })
 
 const getSoil=asyncHandler(async(req,res)=>{
-    const {soilName}=req.query
-    if (!soilName) {
-        throw new apiError(400, "Soil name is required");
-    }
-   
-    const soil=await Plants.find({soilName:{$regex:soilName,$options:i}})
+    
+  
+    const soil=await Soil.find()
     if(!soil){
         throw new apiError(404,"plant not availabel")
     }
    // Prepare an object to store the translated results
 
-   return res.status(200).json(new apiResponse(200, { soil: soilName}));
+   return res.status(200).json(new apiResponse(200, { soil: soil}));
 })
 
 export {getSoil}

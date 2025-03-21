@@ -17,8 +17,8 @@ app.use(cookieParser())
 
 
 
-
-
+import soilRouter from "./routers/soil.routes.js"
+import remediesRouter from "./routers/remedis.routes.js"
 import userRouter from "./routers/user.routes.js"
 import vendorRouter from "./routers/vendors.routes.js"
 import postRouter from "./routers/post.routes.js"
@@ -27,4 +27,6 @@ app.use("/api/v1/users",userRouter)
 app.use("/api/v1/vendors",vendorRouter)
 app.use("/api/v1/posts",postRouter)
 app.use("/api/v1/plants",plantsRouter)
+app.use("/api/v1/remedies",remediesRouter)
+app.use("/api/v1/soil",soilRouter)
 export default app

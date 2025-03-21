@@ -8,5 +8,5 @@ const router=Router()
 router.route("/register").post(upload.none(),registerUser)
 router.route("/login").post(upload.none(),loginUser)
 router.route("/logout").get(verifyJwt,logout)
-router.route("/getuser").get(verifyJwt,getUserDetails)
+router.route("/getuser").get(getUserDetails)
 export default router

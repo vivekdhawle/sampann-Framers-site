@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 import { User } from "../Models/user.model.js"
-
+import { apiError } from "../utils/apiError.js"
 const verifyJwt=async(req,res,next)=>{
     try {
         console.log("gd",req.cookies)

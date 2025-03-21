@@ -7,17 +7,23 @@ const plantSchema=Schema({
 
     },
     information:{
-        type:String
+        type:String //must include range of months from when to when and time required to grow other details 
     },
     bestWayToGrow:{
-        type:String
+        sowingMethods:{
+          type:String
+        },
+        depth:{
+          type:String
+        },
+        
     },
     weatherCondtions:{
         temperature: {
             type: String,
             required: true
           },
-          seasons: {
+          growingSeasons: {
             type: String,
             required: true
           },
@@ -25,11 +31,17 @@ const plantSchema=Schema({
             type: String,
             required: true
           },
-          atmosphereCondition: {
+          rainfallRequired: {
             type: String,
             required: true
           }
         
+    },
+    pesticideQuantity:{
+      type:String  //amout of pesticide per square meter of land
+    },
+    sideEffectsonSoilFertility:{
+      type:String
     }
 
 })

@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 // Translation function using LibreTranslate
 export const translateText = async (text, targetLanguage) => {
   try {
-    const response = await fetch('https://libretranslate.de/translate', {
+    const response = await fetch('http://localhost:5000/translate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

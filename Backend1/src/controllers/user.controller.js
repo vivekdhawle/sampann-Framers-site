@@ -22,10 +22,10 @@ const genrateAccessTokenAndRefreshToken=async(_id)=>{
 
 const registerUser=asyncHandler(async(req,res)=>{
     const {username,phnNo,password}=req.body
-    if([username,phnNo,password].some((fields)=>fields?.trim()===" ")){
+    if([phnNo,password].some((fields)=>fields?.trim()===" ")){
         throw new apiError(401,"all fields are required")
     }
-    const userexist=await User.find({$or:[{username},{phnNo}]})
+    const userexist=await User.find({phnNo:phnNo})
     if (!userexist){
         throw new apiError(401,"user already exist")
     }
@@ -111,7 +111,11 @@ const refreshAccessToken=asyncHandler(async(req,res)=>{
 })
 
 const getUserDetails=asyncHandler(async(req,res)=>{
-    const user=await User.findById(req.user._id).select("-password -refreshToken")
+    
+    const _id=req.query
+    
+    const user=await User.findById(_id).select("-password -refreshToken")
+    console.log(user,"dffffgdsdgsdg")
     if(!user){
         throw new apiError(404,"login first")
     }
@@ -122,7 +126,7 @@ const getUserDetails=asyncHandler(async(req,res)=>{
           {
             // Match vendors by the owner field (userId)
             $match: {
-              owner: new mongoose.Types.ObjectId(req.user._id), // Convert userId to ObjectId
+              owner: new mongoose.Types.ObjectId(req.query._id), // Convert userId to ObjectId
             },
           },
         ]);

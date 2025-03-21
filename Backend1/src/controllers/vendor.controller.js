@@ -33,12 +33,16 @@ const seeProduct=asyncHandler(async(req,res)=>{
 
 const seeAllProducts=asyncHandler(async(req,res)=>{
     const {productName}=req.query
+    if(productName){
+        const products=await  Vendors.find({productName:productName}).limit(20)
+        return res.status(200).json(new apiResponse(200,{products:products},"done"))
+    }
     if(!productName){
         const products=await  Vendors.find().limit(20)
-        return res.status(200).json(new apiResponse({products:products}))
+        return res.status(200).json(new apiResponse(200,{products:products},"done"))
     }
     const products=await Vendors.find({productName:productName})
-    return res.status(200).json(new apiResponse({products:products}))
+    return res.status(200).json(new apiResponse(200,{products:products},"done"))
 })
 
 const remove=asyncHandler(async(req,res)=>{
@@ -46,5 +50,39 @@ const remove=asyncHandler(async(req,res)=>{
     await Vendors.findByIdAndDelete(_id)
     res.status(200).json({ message: 'Product deleted successfully' });
 })
+
+
+
+import { Posts } from "../models/post.models.js";      // Update this path to your posts model
+
+const calculateAndUpdateAverageLikes = async () => {
+    try {
+        // Step 1: Calculate average likes for each user
+        const averages = await Posts.aggregate([
+            {
+                $group: {
+                    _id: "$owner", // Group by owner (user)
+                    averageLikes: { $avg: "$likes" } // Calculate average likes
+                }
+            }
+        ]);
+
+        // Step 2: Update each vendor's document with the calculated average likes
+        for (const average of averages) {
+            await Vendors.updateMany(
+                { owner: average._id }, // Match vendor documents by owner
+                { $set: { averageLikes: average.averageLikes } } // Set averageLikes field
+            );
+        }
+
+        console.log("Average likes calculated and updated successfully!");
+
+    } catch (error) {
+        console.error("Error calculating or updating average likes:", error);
+    }
+};
+
+// Call the function to perform the operation
+calculateAndUpdateAverageLikes();
 
 export {remove,seeProduct,seeAllProducts,postProduct}
