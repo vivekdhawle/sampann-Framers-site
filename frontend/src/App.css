@@ -1,0 +1,101 @@
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1f2937; /* Dark grey background */
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #4b5563; /* Greyish scrollbar */
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+  
+/* Make "Select Language" text black */
+
+  /* Style the dropdown itself */
+
+  
+  /* Hide Google Logo */
+
+  .goog-te-gadget-icon{
+    display:none;
+  }
+  /* Remove the Google Translate top banner */
+
+  .goog-te-gadget-simple {
+    display: flex !important;
+    align-items: center !important;
+    background-color: #1f2937 !important; /* Tailwind bg-slate-800 */
+    border: 2px solid #1f2937 !important;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Ensure the dropdown and text are in a single row */
+.goog-te-gadget-simple span,
+.goog-te-gadget-simple select {
+    display: inline-block !important;
+    color: white !important; /* Change text color */
+    font-size: 14px !important;
+    font-weight: bold !important;
+    margin-right: 8px; /* Add spacing between elements */
+}
+
+/* Style the dropdown */
+.goog-te-combo {
+    background-color: #374151 !important; /* Tailwind bg-gray-700 */
+    color: white !important;
+    border: 1px solid #4b5563 !important;
+    padding: 3px 8px;
+    border-radius: 5px;
+}
+/* Target the main container */
+.VIpgJd-ZVi9od-xl07Ob-lTBxed {
+    display: flex;
+    align-items: center; /* Aligns items in a single line */
+    gap: 5px; /* Adds space between elements */
+    background-color: #1f2937 !important; /* Dark background */
+    padding: 5px 10px; /* Adjust padding */
+    border-radius: 5px; /* Optional: Adds rounded corners */
+    color: black !important; /* Ensure text is black */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Style the "Select Language" text */
+.VIpgJd-ZVi9od-xl07Ob-lTBxed span:first-child {
+    font-size: 14px;
+    font-weight: bold;
+    color: black !important; /* Ensure text is black */
+}
+
+/* Hide unnecessary elements (like cleardot images) */
+.VIpgJd-ZVi9od-xl07Ob-lTBxed img {
+    display: none !important;
+}
+
+/* Hide the middle empty span */
+.VIpgJd-ZVi9od-xl07Ob-lTBxed span:nth-child(3) {
+    display: none;
+}
+.VIpgJd-ZVi9od-xl07Ob-lTBxed span:nth-child(2) {
+    display: none;
+}
+
+/* Style the dropdown arrow */
+.VIpgJd-ZVi9od-xl07Ob-lTBxed span[aria-hidden="true"] {
+    font-size: 14px;
+    font-weight: bold;
+    color: black !important; /* Make arrow black */
+    margin-left: 5px;
+}
+/* Hide the unwanted span with the left border */
+.VIpgJd-ZVi9od-xl07Ob-lTBxed span[style*="border-left"] {
+    display: none !important;
+}
